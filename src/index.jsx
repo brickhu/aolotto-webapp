@@ -10,6 +10,7 @@ import AoSyncStrategy from "@vela-ventures/aosync-strategy";
 import WebWalletStrategy from "@arweave-wallet-kit/webwallet-strategy";
 import OthentStrategy from "@arweave-wallet-kit/othent-strategy";
 import WanderStrategy from "@arweave-wallet-kit/wander-strategy"
+import WAuthStrategy, { WAuthProviders } from "@wauth/strategy";
 
 
 import Spinner from './compontents/spinner'
@@ -64,9 +65,10 @@ render(() => (
     ensurePermissions: true,
     strategies: [
       new WanderStrategy(),
-      new OthentStrategy(),
       new WebWalletStrategy(),
-      new AoSyncStrategy()
+      new AoSyncStrategy(),
+      new WAuthStrategy({ provider: WAuthProviders.Google }),
+      new WAuthStrategy({ provider: WAuthProviders.Discord }),
     ]
   }}>
     <HashRouter root={App}>
